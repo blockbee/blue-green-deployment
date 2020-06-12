@@ -21,6 +21,7 @@ pipeline {
 			  steps {
 				sh 'docker build -t static-container .'
 			  }
+		  }
 			  
 		 stage('Push Container') {
 			  steps {
@@ -32,6 +33,5 @@ pipeline {
 				  }
 			  }
 		 } 
-		 
-	}
+	 }
 }
