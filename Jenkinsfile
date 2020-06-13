@@ -25,8 +25,8 @@ pipeline {
 
 		 stage('Deploy container') {
 			steps {
-				sh 'kubectl apply -f rolling-deploy.yaml'
-				sh 'kubectl apply -f service.yaml'
+				sh 'kubectl apply -f rolling-deploy.yml'
+				sh 'kubectl apply -f service.yml'
 			}
 		 }
 	 }
