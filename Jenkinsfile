@@ -19,7 +19,7 @@ pipeline {
 		 
 		 stage('Building Docker image') {
 			  steps {
-				sh 'docker build -t static-container .'
+				sh 'docker build -t static-nginx .'
 			  }
 		  }
 			  
@@ -27,11 +27,18 @@ pipeline {
 			  steps {
 			      script {
 				    docker.withRegistry('https://index.docker.io/v1', 'DockerHub') {
-					  def image = docker.build('sivdoc/static-container:latest')
+					  def image = docker.build('sivdoc/static-nginx:latest')
 					  image.push()
 					}
 				  }
 			  }
-		 } 
+		 }
+
+		 stage('Deploy container') {
+
+				kubectl apply -f rolling-deploy.yaml
+				kubectl apply -f service.yaml
+
+		 }
 	 }
 }
