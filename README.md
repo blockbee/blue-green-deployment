@@ -1,2 +1,2 @@
 
-# Capstone project: Blue/Green deployment
+# Capstone project: Rolling deployment
