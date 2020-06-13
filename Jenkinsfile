@@ -35,10 +35,10 @@ pipeline {
 		 }
 
 		 stage('Deploy container') {
-
-				kubectl apply -f rolling-deploy.yaml
-				kubectl apply -f service.yaml
-
+			steps {
+				sh 'kubectl apply -f rolling-deploy.yaml'
+				sh 'kubectl apply -f service.yaml'
+			}
 		 }
 	 }
 }
