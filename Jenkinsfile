@@ -22,6 +22,17 @@ pipeline {
 				sh 'docker build -t static-nginx .'
 			  }
 		  }
+		    	  
+		 stage('Push Container') {
+			  steps {
+			      script {
+				    docker.withRegistry('https://index.docker.io/v1', 'DockerHub') {
+					  def image = docker.build('sivdoc/static-nginx:latest')
+					  image.push()
+					}
+				  }
+			  }
+		 }
 
 		 stage('Deploy container') {
 			steps {
