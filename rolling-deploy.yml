@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-nginx
+  name: static-nginx
   labels:
-    app: my-nginx
+    app: static-nginx
 spec:
   replicas: 4
   minReadySeconds: 1 # Default 0
@@ -16,14 +16,14 @@ spec:
       maxUnavailable: 1  # Default 25%
   selector:
     matchLabels:
-      app: my-nginx
+      app: static-nginx
   template:
     metadata:
       labels:
-        app: my-nginx
+        app: static-nginx
     spec:
       containers:
-      - name: my-nginx
+      - name: static-nginx
         image: sivdoc/static-nginx  #nginx:1.17.8-alpine
         ports:
         - containerPort: 80
