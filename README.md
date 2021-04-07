@@ -1,2 +1,2 @@
 
-# Capstone project: Rolling deployment
+# Capstone project: Rolling deployment to AWS
